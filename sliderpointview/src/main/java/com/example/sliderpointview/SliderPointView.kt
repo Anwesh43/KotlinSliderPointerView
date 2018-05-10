@@ -4,6 +4,7 @@ package com.example.sliderpointview
  * Created by anweshmishra on 11/05/18.
  */
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.graphics.*
@@ -131,6 +132,14 @@ class SliderPointView(ctx : Context) : View(ctx) {
             sliderPoint.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        fun create(activity : Activity) : SliderPointView {
+            val view : SliderPointView = SliderPointView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 
