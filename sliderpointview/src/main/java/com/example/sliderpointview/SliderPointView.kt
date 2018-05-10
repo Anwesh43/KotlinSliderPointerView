@@ -85,20 +85,21 @@ class SliderPointView(ctx : Context) : View(ctx) {
             val w : Float = canvas.width.toFloat()
             val h : Float = canvas.height.toFloat()
             val hSize : Float = h / 10
-            val r : Float = Math.min(w, h)/20
-            val x : Float = w * state.scale
+            val r : Float = Math.min(w, h) / 20
+            val x : Float = 0.05f * w + 0.9f * w * state.scale
             canvas.save()
-            canvas.translate(0f, h/2)
+            canvas.translate(0f, h / 2)
             canvas.save()
             canvas.translate(x, 0f)
             val path : Path = Path()
-            path.moveTo(0f, -hSize/2)
-            path.lineTo(-r, -hSize)
-            path.arcTo(RectF(-r, -hSize -r , r, -hSize + r), 180f, 180f)
-            path.lineTo(0f, 0f)
+            path.moveTo(0f, -hSize / 2)
+            path.lineTo(-r, -1.5f * hSize)
+            path.arcTo(RectF(-r, -1.5f * hSize -r , r, -1.5f * hSize + r), 180f, 180f)
+            path.lineTo(0f, -hSize / 2)
             canvas.drawPath(path, paint)
             canvas.restore()
-            canvas.drawRect(RectF(0f, -hSize/2, x, hSize/2), paint)
+            canvas.drawRect(RectF(0.05f * w, -hSize/2, x, hSize/2), paint)
+            canvas.drawCircle(x, 0f, hSize/2, paint)
             canvas.restore()
         }
 
