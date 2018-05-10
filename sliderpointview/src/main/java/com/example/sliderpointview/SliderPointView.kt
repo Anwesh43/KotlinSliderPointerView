@@ -109,6 +109,29 @@ class SliderPointView(ctx : Context) : View(ctx) {
 
     }
 
+    data class Renderer(var view : SliderPointView) {
+
+        private val animator : Animator = Animator(view)
+
+        private val sliderPoint : SliderPoint = SliderPoint(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#212121"))
+            sliderPoint.draw(canvas, paint)
+            animator.animate {
+                sliderPoint.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sliderPoint.startUpdating {
+                animator.start()
+            }
+        }
+    }
+
 }
 
 
