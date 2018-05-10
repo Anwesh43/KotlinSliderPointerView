@@ -75,7 +75,40 @@ class SliderPointView(ctx : Context) : View(ctx) {
         }
     }
 
-    
+    data class SliderPoint(var i : Int, val state : State = State()) {
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            paint.color = Color.parseColor("#2980b9")
+            val w : Float = canvas.width.toFloat()
+            val h : Float = canvas.height.toFloat()
+            val hSize : Float = h / 10
+            val r : Float = Math.min(w, h)/20
+            val x : Float = w * state.scale
+            canvas.save()
+            canvas.translate(0f, h/2)
+            canvas.save()
+            canvas.translate(x, 0f)
+            val path : Path = Path()
+            path.moveTo(0f, -hSize/2)
+            path.lineTo(-r, -hSize)
+            path.arcTo(RectF(-r, -hSize -r , r, -hSize + r), 180f, 180f)
+            path.lineTo(0f, 0f)
+            canvas.drawPath(path, paint)
+            canvas.restore()
+            canvas.drawRect(RectF(0f, -hSize/2, x, hSize/2), paint)
+            canvas.restore()
+        }
+
+        fun update(stopcb : (Float) -> Unit) {
+            state.update(stopcb)
+        }
+
+        fun startUpdating(startcb : () -> Unit) {
+            state.startUpdating(startcb)
+        }
+
+    }
+
 }
 
 
