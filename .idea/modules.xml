@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KotlinSliderPointView.iml" filepath="$PROJECT_DIR$/KotlinSliderPointView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sliderpointview/sliderpointview.iml" filepath="$PROJECT_DIR$/sliderpointview/sliderpointview.iml" />
     </modules>
   </component>
 </project>
